@@ -1,0 +1,309 @@
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+@media(max-width: 640px) {
+  .swiper {
+    width: 100%;
+    height: auto;
+    margin-top: 80px;
+  }
+
+  .swiper-wrapper {
+    margin-bottom: 30px;
+  }
+
+  .swiper-slide {
+    scale: 1 !important;
+  }
+}
+
+.swiper-wrapper {
+  width: 100%;
+}
+
+.swiper-pagination-bullet {
+  background-color: white;
+  border: 1px solid black !important;
+  opacity: 0.9;
+  width: 5px;
+  height: 5px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: black;
+}
+
+.swiper-slide {
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  transition-timing-function: cubic-bezier(0.2, 0.2, 0.7, 1);
+  cursor: pointer;
+  touch-action: none;
+}
+
+.swiper-slide img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.swiper-slide video {
+  width: 100%;
+  object-fit: cover;
+}
+
+.swiper-3d .swiper-cube-shadow,
+.swiper-3d .swiper-slide {
+  height: auto;
+}
+
+.swiper-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.swiper-slide {
+  scale: 2;
+  /* cursor: pointer; */
+  transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* cursor */
+
+.cursor {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+
+svg {
+  width: 98px;
+  height: 98px;
+  overflow: visible;
+  border: 2px solid #888;
+  border-radius: 50%;
+  transform: translate(-50px, -50px) rotate(0deg);
+}
+
+circle {
+  width: 100px;
+  height: 100px;
+  fill: none;
+  stroke: #000000aa;
+  stroke-width: 2px;
+  stroke-dasharray: 314;
+  stroke-dashoffset: 314;
+  animation: drawAndErase 5s linear infinite;
+}
+
+@keyframes drawAndErase {
+  0% {
+    stroke-dashoffset: 314;
+  }
+
+  60% {
+    stroke-dashoffset: 20;
+    animation-timing-function: linear;
+  }
+
+  75% {
+    stroke-dashoffset: 3;
+    animation-timing-function: linear;
+  }
+
+  90% {
+    stroke-dashoffset: 0;
+    animation-timing-function: cubic-bezier(0.5, 0, 0.75, 1);
+  }
+
+  100% {
+    stroke-dashoffset: -314;
+  }
+}
+
+@keyframes erase {
+  0% {
+    stroke-dashoffset: 314;
+  }
+
+  50% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: -314;
+  }
+}
+
+
+/* Swiper Prev & Next Button */
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.swiper-button-prev {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-top: 1.5px solid #000;
+  border-left: 1.5px solid #000;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  transition: opacity 0.3s ease;
+}
+
+.swiper-button-prev.animate {
+  animation: moveLeft 0.8s;
+}
+
+.swiper-button-next {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-top: 1.5px solid #000;
+  border-left: 1.5px solid #000;
+  transform: translate(-50%, -50%) rotate(135deg);
+  transition: opacity 0.3s ease;
+}
+
+.swiper-button-next.animate {
+  animation: moveRight 0.8s;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  content: "";
+  display: block;
+  width: 45px;
+  height: 1px;
+  background-color: black;
+  transform: rotate(45deg) translate(6px, 15px);
+  left: 0;
+  top: 0;
+}
+
+@keyframes moveRight {
+  0% {
+    transform: translate(-50%, -50%) rotate(135deg);
+  }
+
+  50% {
+    transform: translate(calc(-50% + 20px), -50%) rotate(135deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(135deg);
+  }
+}
+
+@keyframes moveLeft {
+  0% {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  50% {
+    transform: translate(calc(-50% - 20px), -50%) rotate(-45deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+.prevSlideMoveLeft {
+  animation: prevMoveLeftAnim 0.3s ease-in-out forwards;
+}
+
+@keyframes prevMoveLeftAnim {
+  0% {
+    position: relative;
+    right: -20px;
+  }
+
+  100% {
+    position: relative;
+    right: 0;
+  }
+}
+
+.prevSlideMoveRight {
+  animation: prevSlideMoveRight 0.3s ease-in-out forwards;
+}
+
+@keyframes prevSlideMoveRight {
+  0% {
+    position: relative;
+    right: 0;
+  }
+
+  100% {
+    position: relative;
+    right: -20px;
+  }
+}
+
+.nextSlideMoveLeft {
+  animation: nextMoveLeftAnim 0.3s ease forwards;
+}
+
+@keyframes nextMoveLeftAnim {
+  0% {
+    position: relative;
+    left: 0;
+  }
+
+  100% {
+    position: relative;
+    left: -20px;
+  }
+}
+
+.nextSlideMoveRight {
+  animation: nextMoveRightAnim 0.3s ease forwards;
+}
+
+@keyframes nextMoveRightAnim {
+  0% {
+    position: relative;
+    left: -20px;
+  }
+
+  100% {
+    position: relative;
+    left: 0;
+  }
+}
