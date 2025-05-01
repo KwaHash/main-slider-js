@@ -24,3 +24,7 @@ This project implements a feature-rich Swiper carousel with custom navigation be
 * A <circle> element’s animation is temporarily sped up when navigating slides.
 * The speed returns to normal after a short duration.
 * Controlled using CSS keyframe animations (drawAndErase, erase).
+
+### Reference Sites
+* 👉 [https://daft-about-draft.com](https://daft-about-draft.com)
+* 👉 [https://www.ringjacket.co.jp](https://www.ringjacket.co.jp)
